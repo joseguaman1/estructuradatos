@@ -11,12 +11,12 @@ package controlador;
  */
 public class Burbuja {
 
-    private int[] numeros = {36, 24, 10, 6, 12};
+    private int[] numeros = {54,70,71,48,20,33,30,82,67,81,63,90,63,82,19,82,93,52,27,97,72,88,94,35,39,80,36,47,77,23,66,8,5,56,38,93,19,88,59,28,24,2,22,67,87,78,77,21,54,93,40,50,31,37,85,94,78,67,92,26,9,56,8,85,60,58,0,41,27,36,84,32,57,13,10,43,3,95,37,33,2,62,97,99,60,7,39,6,5,58,74,72,12,4,94,65,23,21,21,33};
     private String[] apellidos = {"Salazar", "Armijos", "Zeas", "Tacuri", "TACURI", "Soto"};
 
     public void llenadoAleatoreo() {
-        numeros = new int[20000];
-        for (int i = 0; i < 20000; i++) {
+        numeros = new int[100];
+        for (int i = 0; i < 100; i++) {
             numeros[i] = (int) (Math.random() * 100);
         }
     }
@@ -104,6 +104,7 @@ public class Burbuja {
                     numeros[j] = aux;
                     k = j;
                 }
+                cont++;
             }
             l = k + 1;
             for (int j = l; j <= r; j++) {
@@ -113,6 +114,7 @@ public class Burbuja {
                     numeros[j] = aux;
                     k = j;
                 }
+                cont++;
             }
             r = k - 1;
             cont++;
