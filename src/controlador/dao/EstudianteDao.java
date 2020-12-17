@@ -5,6 +5,7 @@
  */
 package controlador.dao;
 
+import controlador.listas.ListaSimple;
 import modelo.Estudainte;
 
 /**
@@ -38,6 +39,11 @@ public class EstudianteDao extends AdaptadorDao {
 
     public void setEstudainte(Estudainte estudainte) {
         this.estudainte = estudainte;
+    }
+    
+    public ListaSimple ordenar(ListaSimple estudiantes, int tipo_ordenacion) {
+        estudiantes.ordenar(tipo_ordenacion);
+        return estudiantes;
     }
     
     

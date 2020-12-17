@@ -25,7 +25,7 @@ public class OrdenacionNumero {
     }
     
     public void ordenar() {
-        lista.ordenar();
+        lista.ordenar(ListaSimple.ORDENAR_DESCENDENTE);
     }
     
 }

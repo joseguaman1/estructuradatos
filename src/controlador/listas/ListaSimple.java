@@ -14,6 +14,8 @@ import controlador.utiles.Utiles;
 public class ListaSimple {
 
     public Nodo cabecera;
+    public static final int ORDENAR_ASCENDENTE = -1;
+    public static final int ORDENAR_DESCENDENTE = 1;
 
     public ListaSimple() {
         this.cabecera = null;
@@ -129,24 +131,18 @@ public class ListaSimple {
         }
     }
 
-    public void ordenar() {
+    public void ordenar(int tipo_ordenacion) {
         if (!estaVacio()) {
             for (int i = 0; i < tamano() - 1; i++) {
                 int k = i;
                 for (int j = i + 1; j < tamano(); j++) {
-
-                    //if (obtenerPorPosicion(j) < obtenerPorPosicion(k)) {
-                    if (Utiles.compareTo(obtenerPorPosicion(j), obtenerPorPosicion(k)) == -1) {
+                    if (Utiles.compareTo(obtenerPorPosicion(j), obtenerPorPosicion(k)) == tipo_ordenacion) {
                         k = j;
-                    }
-                    //cont++;
+                    }                    
                 }
-                Object aux = obtenerPorPosicion(i);
-                //  datos.getVector()[i] = datos.getVector()[k];
+                Object aux = obtenerPorPosicion(i);                
                 editar(i, obtenerPorPosicion(k));
-                editar(k, aux);
-                //datos.getVector()[k] = aux;
-                //cont++;
+                editar(k, aux);                
             }
         }
     }

@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.dao.EstudianteDao;
+import controlador.listas.ListaSimple;
 import javax.swing.JOptionPane;
 import vista.modelo.ModeloTablaEstudiante;
 
@@ -24,14 +25,17 @@ public class Frm_estudiante extends javax.swing.JDialog {
     public Frm_estudiante(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        cargarTabla();
+        cargarTabla();        
     }
 
-    private void cargarTabla() {
-        modelo.setLista(ed.listar());
+    private void cargarTabla() {        
+        modelo.setLista(ed.ordenar(ed.listar(), ListaSimple.ORDENAR_DESCENDENTE));        
         tbltabla.setModel(modelo);
         tbltabla.updateUI();
     }
+    //private void ordenar() {
+     //   ed.ordenar();
+    //}
     
     private void limpiar() {
         ed.setEstudainte(null);
