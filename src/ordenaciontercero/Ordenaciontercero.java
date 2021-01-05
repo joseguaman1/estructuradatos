@@ -9,6 +9,7 @@ import controlador.Burbuja;
 import controlador.Insersion;
 import controlador.OrdenacionNumero;
 import controlador.Seleccion;
+import controlador.utiles.Utiles;
 
 /**
  *
@@ -35,7 +36,8 @@ public class Ordenaciontercero {
         //burbuja.imprimirCadena();
         */
        // burbuja.llenadoAleatoreo();
-       System.out.println("BURBUJA");
+     
+       /*System.out.println("BURBUJA");
         Burbuja burbuja = new Burbuja();
         burbuja.imprimir();
         burbuja.ordenarMejoradoBurbuja();
@@ -60,7 +62,11 @@ public class Ordenaciontercero {
         ordenacion.imprimir();
         ordenacion.ordenar();
         ordenacion.imprimir();
-        
+        */
+        Utiles u = new Utiles();
+        System.out.println(u.factorialOther(31));
+        //System.out.println(u.factorial(31));
+        System.out.println(System.currentTimeMillis()+" ****");
     }
-    
+    //1608305402952 ****
 }

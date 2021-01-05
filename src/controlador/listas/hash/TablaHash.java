@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador.listas;
+package controlador.listas.hash;
 
 import controlador.utiles.Utiles;
 
@@ -11,20 +11,19 @@ import controlador.utiles.Utiles;
  *
  * @author joe
  */
-public class ListaSimple {
-
-    public Nodo cabecera;
+public class TablaHash {
+    public NodoHash cabecera;
     public static final int ORDENAR_ASCENDENTE = -1;
     public static final int ORDENAR_DESCENDENTE = 1;
 
-    public ListaSimple() {
+    public TablaHash() {
         this.cabecera = null;
     }
 
     public int tamano() {
         int tamano = 0;
         if (!estaVacio()) {
-            Nodo tmp = cabecera;
+            NodoHash tmp = cabecera;
             while (tmp != null) {
                 tamano++;
                 tmp = tmp.getSig();
@@ -38,7 +37,7 @@ public class ListaSimple {
             new NullPointerException("Se debe agregar un objeto restaurante");
         }
         //se crea el nodo con el dato y que apunte a nulo
-        Nodo tmp = new Nodo(dato, null);
+        NodoHash tmp = new NodoHash(dato, null, tamano());
         //se apunta el nodo temporal a la cabecera
         tmp.setSig(cabecera);
         //se mueve el nodo tmp a la cabecera
@@ -62,7 +61,7 @@ public class ListaSimple {
     public Object obtenerPorPosicion(int pos) {
         Object r = null;
         if (!estaVacio()) {
-            Nodo tmp = cabecera;
+            NodoHash tmp = cabecera;
             for (int i = 0; i < pos; i++) {
                 tmp = tmp.getSig();
                 if (tmp == null) {
@@ -76,10 +75,26 @@ public class ListaSimple {
         }
         return r;
     }
+    
+    public Object obtenerPorLlave(int llave) {
+        Object r = null;
+        if (!estaVacio()) {
+            NodoHash tmp = cabecera;
+            while(tmp != null) {
+                if(tmp.getClave() == llave) {
+                    r = tmp;
+                    break;
+                }
+                tmp = tmp.getSig();
+            }
+        }
+        return r;
+    }
+    
 
     public void verDatos() {
         if (!estaVacio()) {
-            Nodo tmp = cabecera;
+            NodoHash tmp = cabecera;
             while (tmp != null) {
                 System.out.print(tmp.getDato().toString() + "\t");
                 tmp = tmp.getSig();
@@ -93,14 +108,14 @@ public class ListaSimple {
         if (estaVacio() || pos <= 0) {
             insertar(dato);
         } else {
-            Nodo iterador = cabecera;
+            NodoHash iterador = cabecera;
             for (int i = 0; i < pos; i++) {
                 if (iterador.getSig() == null) {
                     break;
                 }
                 iterador = iterador.getSig();
             }
-            Nodo tmp = new Nodo(dato, iterador.getSig());
+            NodoHash tmp = new NodoHash(dato, iterador.getSig(), tamano());
             iterador.setSig(tmp);
         }
     }
@@ -120,7 +135,7 @@ public class ListaSimple {
             } else {
                 // En caso que el nodo a eliminar este por el medio 
                 // o sea el ultimo
-                Nodo aux = cabecera;
+                NodoHash aux = cabecera;
                 // Recorre la lista hasta lleger al nodo anterior al eliminar.
                 for (int i = 0; i < posicion; i++) {
                     aux = aux.getSig();
@@ -130,8 +145,7 @@ public class ListaSimple {
             }
         }
     }
-    //2020-12-12 ---String
-    
+
     public void ordenar(int tipo_ordenacion) {
         if (!estaVacio()) {
             for (int i = 0; i < tamano() - 1; i++) {
@@ -147,5 +161,4 @@ public class ListaSimple {
             }
         }
     }
-
 }
