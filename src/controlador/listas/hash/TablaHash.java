@@ -146,12 +146,12 @@ public class TablaHash {
         }
     }
 
-    public void ordenar(int tipo_ordenacion) {
+    public void ordenar(int tipo_ordenacion, String atributo) {
         if (!estaVacio()) {
             for (int i = 0; i < tamano() - 1; i++) {
                 int k = i;
                 for (int j = i + 1; j < tamano(); j++) {
-                    if (Utiles.compareTo(obtenerPorPosicion(j), obtenerPorPosicion(k)) == tipo_ordenacion) {
+                    if (Utiles.compareTo(obtenerPorPosicion(j), obtenerPorPosicion(k), atributo) == tipo_ordenacion) {
                         k = j;
                     }                    
                 }

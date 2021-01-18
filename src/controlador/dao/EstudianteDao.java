@@ -42,7 +42,7 @@ public class EstudianteDao extends AdaptadorDao {
     }
     
     public ListaSimple ordenar(ListaSimple estudiantes, int tipo_ordenacion) {
-        estudiantes.ordenar(tipo_ordenacion);
+        estudiantes.ordenar(tipo_ordenacion, "id");
         return estudiantes;
     }
     

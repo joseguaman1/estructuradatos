@@ -132,12 +132,12 @@ public class ListaSimple {
     }
     //2020-12-12 ---String
     
-    public void ordenar(int tipo_ordenacion) {
+    public ListaSimple ordenar(int tipo_ordenacion, String atributo) {
         if (!estaVacio()) {
             for (int i = 0; i < tamano() - 1; i++) {
                 int k = i;
                 for (int j = i + 1; j < tamano(); j++) {
-                    if (Utiles.compareTo(obtenerPorPosicion(j), obtenerPorPosicion(k)) == tipo_ordenacion) {
+                    if (Utiles.compareTo(obtenerPorPosicion(j), obtenerPorPosicion(k), atributo) == tipo_ordenacion) {
                         k = j;
                     }                    
                 }
@@ -146,6 +146,31 @@ public class ListaSimple {
                 editar(k, aux);                
             }
         }
+        return this;
+    }
+    
+    public Object busquedaBinaria(String dato, String atributo) {
+        System.out.println("DATO " + dato + " ATRIBUTO " + atributo);
+        int n = tamano();
+        int centro, inf = 0, sup = n - 1;
+
+        while (inf <= sup) {
+            centro = (sup + inf) / 2;
+
+            System.out.println("centro " + centro + " ss " + obtenerPorPosicion(centro) + " saa " + dato);
+            //if ((String.valueOf(obtenerPorPosicion(centro))).equalsIgnoreCase(dato)) {
+            if(Utiles.comparar(dato, obtenerPorPosicion(centro), atributo)) {
+                return obtenerPorPosicion(centro);
+            } else if (Utiles.compareTo(dato, obtenerPorPosicion(centro), atributo) < 0) {//else if (dato.compareTo(String.valueOf(obtenerPorPosicion(centro))) < 0) {
+                sup = centro - 1;
+                System.out.println(" sup " + sup);
+            } else {
+                inf = centro + 1;
+                System.out.println("inf " + inf);
+            }
+
+        }
+        return null;
     }
 
 }
